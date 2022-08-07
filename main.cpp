@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include <iomanip>
+#include <thread>
 
 #include <arpa/inet.h> // htons, inet_addr
 #include <netinet/in.h> // sockaddr_in
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
                 bandwidth_limit = atof(argv[4]);
                 if (bandwidth_limit != 0 && bandwidth > bandwidth_limit)
                 {
-                    sleep(1);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(50));
                 }
             }
         }
